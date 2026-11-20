@@ -1,41 +1,227 @@
-#root {
-  max-width: 1280px;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* 1. Main layout */
+.container {
+  max-width: 850px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 35px 30px;
+}
+
+/* 2. Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 110px;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #38313e;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo-icon,
+.header-decoration {
+  display: none;
+}
+
+/* 3. Introduction */
+.intro {
+  margin-bottom: 60px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #8d7b9d;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 58px;
+  font-weight: 600;
+  letter-spacing: -3px;
+  line-height: 1.1;
+  margin: 0 0 18px;
+  color: #302d35;
+}
+
+.period {
+  color: #9c85b5;
+}
+
+.description {
+  font-size: 15px;
+  color: #77717c;
+  margin: 0;
+}
+
+/* 4. Notification header */
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #cfc7c9;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #514b53;
+}
+
+.count-number {
+  background-color: #ddd3e8;
+  color: #51405f;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.clear-all {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #51405f;
+  cursor: pointer;
+}
+
+.clear-all:hover {
+  text-decoration: underline;
+}
+
+.clear-all:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* 5. Notification rows */
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 25px 5px;
+  border-bottom: 1px solid #e0dadd;
+}
+
+.notification:hover {
+  background-color: #f0ebef;
+}
+
+/* 6. Notification icon */
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  background-color: #e3d9eb;
+  color: #685576;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+/* 7. Notification text */
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #302d35;
+}
+
+.notification-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #77717c;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* 8. Clear button */
+.clear-button {
+  border: none;
+  background: none;
+  color: #8a818a;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.clear-button:hover {
+  color: #302d35;
+}
+
+/* 9. Empty state */
+.empty {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.empty-icon,
+.empty span {
+  display: none;
+}
+
+.empty h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.empty p {
+  color: #77717c;
+  font-size: 14px;
+}
+
+/* 10. Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  padding-top: 20px;
+  border-top: 1px solid #d8d0d4;
+  font-size: 12px;
+  color: #8a818a;
+}
+
+/* 11. Mobile */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  header {
+    margin-bottom: 75px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  h1 {
+    font-size: 40px;
+    letter-spacing: -2px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .notification {
+    gap: 15px;
+    padding: 20px 0;
+  }
 
-.read-the-docs {
-  color: #888;
+  footer {
+    margin-top: 50px;
+  }
 }

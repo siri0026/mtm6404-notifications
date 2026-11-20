@@ -1,32 +1,94 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import notificationData from './notifications'
+import Notification from './Notification'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  // 1. Store notifications
+  const [notifications, setNotifications] = useState(notificationData)
+
+  // 2. Clear one notification
+  function clearNotification(id) {
+    const updatedNotifications = notifications.filter(function(notification) {
+      return notification.id !== id
+    })
+
+    setNotifications(updatedNotifications)
+  }
+
+  // 3. Clear all notifications
+  function clearAll() {
+    setNotifications([])
+  }
+
+  // 4. Display notifications
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+    <div className="container">
+
+      <header>
+        <div className="logo">
+          little inbox /
+        </div>
+      </header>
+
+      <div className="intro">
+        <p className="eyebrow">INBOX / 001</p>
+
+        <h1>
+          Your notifications<span className="period">.</span>
+        </h1>
+
+        <p className="description">
+          Everything in one place.
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className="notification-header">
+        <span className="count">
+          <span className="count-number">
+            {notifications.length}
+          </span>
+          {notifications.length === 1 ? 'notification' : 'notifications'}
+        </span>
+
+        <button
+          className="clear-all"
+          onClick={clearAll}
+          disabled={notifications.length === 0}
+        >
+          Clear all ↗
+        </button>
+      </div>
+
+      <div className="notification-list">
+        {notifications.length === 0 ? (
+          <div className="empty">
+            <h2>All caught up.</h2>
+            <p>You have no new notifications.</p>
+          </div>
+        ) : (
+          notifications.map(function(notification) {
+            return (
+              <Notification
+                key={notification.id}
+                name={notification.name}
+                onClear={function() {
+                  clearNotification(notification.id)
+                }}
+              >
+                {notification.message}
+              </Notification>
+            )
+          })
+        )}
+      </div>
+
+      <footer>
+        <span>little inbox /</span>
+        <span>2026</span>
+      </footer>
+
     </div>
   )
 }
